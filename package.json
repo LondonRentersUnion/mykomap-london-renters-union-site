@@ -11,7 +11,8 @@
   "scripts": {
     "build": "mykomap-site-build -c config -s src -m node_modules/mykomap -d build www/*",
     "deploy": "mykomap-site-deploy -f build/out/",
-    "server": "php -t build/out -S localhost:8080"
+    "server": "php -t build/out -S localhost:8080",
+    "public-server": "echo \"VIEW THE APP AT: http://$(hostname -I | tr -d ' '):8080\";php -t build/out -S 0.0.0.0:8080"
   },
   "author": "Digital Commons Cooperative",
   "license": "UNLICENSED",
