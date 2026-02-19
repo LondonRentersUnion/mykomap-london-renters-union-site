@@ -7,10 +7,10 @@
       "EN": {
         "title": "Licence Type",
         "terms": {
-          "lic:257hmo": "257 HMO",
           "lic:additionalHmo": "Additional HMO licence",
           "lic:mandatoryHmo": "Mandatory HMO licence",
-          "lic:selective": "Selective licence"
+          "lic:selective": "Selective licence",
+          "lic:257hmo": "257 HMO"
         }
       }
     }
