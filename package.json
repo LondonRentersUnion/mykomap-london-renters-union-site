@@ -1,7 +1,7 @@
 {
-  "name": "UPDATE ME",
+  "name": "mykomap-london-renters-union-site",
   "version": "0.1.0",
-  "description": "UPDATE ME",
+  "description": "London Renters Union - Hackney property licensing map",
   "main": "src/index.ts",
   "config": {
     "deploy_to": "",
@@ -16,7 +16,7 @@
   },
   "author": "Digital Commons Cooperative",
   "license": "UNLICENSED",
-  "repository": "github:DigitalCommons/UPDATE ME",
+  "repository": "github:Codev/mykomap-london-renters-union-site",
   "dependencies": {
     "mykomap": "github:DigitalCommons/mykomap#semver:^3.1.4"
   }
