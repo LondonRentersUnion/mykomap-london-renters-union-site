@@ -58,7 +58,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 // Module
-var code = "<div class=\"about\">\n  <h3>London Renter's Union - Hackney Property Licensing Map</h3>\n  <p>\n    A <a href=\"https://www.londonrentersunion.org/\">London Renters Union</a> project\n  </p>\n  <p>\n    This map displays property licensing data for the London Borough of Hackney,\n    as of November 2025 from Hackney Council's public licensing register.\n  </p>\n  <p>\n    Licensing data on public registers is often out of date.\n    Unlicensed properties are a major problem, please bear this in mind if using these maps for outreach. \n  </p>\n  <p>\n    This site is powered by <a href=\"https://digitalcommons.coop/mykomaps/\">Mykomaps</a> which was created by the <a href=\"https://digitalcommons.coop/\">Digital Commons Co-operative</a>.\n  </p>\n</div>\n";
+var code = "<div class=\"about\">\n  <h3>London Renter's Union - Property Licensing Map</h3>\n  <p>\n    A <a href=\"https://www.londonrentersunion.org/\">London Renters Union</a> project\n  </p>\n  <p>\n    This map displays property licensing data for the London Borough of Hackney,\n    as of November 2025 from Hackney Council's public licensing register.\n  </p>\n  <p>\n    Licensing data on public registers is often out of date.\n    Unlicensed properties are a major problem, please bear this in mind if using these maps for outreach. \n  </p>\n  <p>\n    This site is powered by <a href=\"https://digitalcommons.coop/mykomaps/\">Mykomaps</a> which was created by the <a href=\"https://digitalcommons.coop/\">Digital Commons Co-operative</a>.\n  </p>\n</div>\n";
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (code);
 
@@ -77233,7 +77233,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"variant":"mykomap-london-renters-union-site","timestamp":"2026-02-25T11:26:44.702Z","gitcommit":"0831ac5","mykoMapVersion":"3.1.4"}');
+module.exports = JSON.parse('{"variant":"mykomap-london-renters-union-site","timestamp":"2026-02-25T11:29:32.747Z","gitcommit":"2c20847","mykoMapVersion":"3.1.4"}');
 
 /***/ })
 
