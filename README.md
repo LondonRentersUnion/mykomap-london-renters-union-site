@@ -1,6 +1,8 @@
 # NAME
 
-mykomap-london-renters-union-site
+London Renter's Union licensing map.
+
+See the live version at https://map.renterpower.org/
 
 <br/>
 
