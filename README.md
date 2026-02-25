@@ -1,6 +1,6 @@
 # NAME
 
-London Renter's Union licensing map.
+London Renter's Union property licensing map.
 
 See the live version at https://map.renterpower.org/
 
