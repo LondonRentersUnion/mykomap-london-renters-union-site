@@ -77233,7 +77233,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"variant":"mykomap-london-renters-union-site","timestamp":"2026-02-25T11:29:32.747Z","gitcommit":"2c20847","mykoMapVersion":"3.1.4"}');
+module.exports = JSON.parse('{"variant":"mykomap-london-renters-union-site","timestamp":"2026-02-26T14:05:41.199Z","gitcommit":"d037946","mykoMapVersion":"3.1.4"}');
 
 /***/ })
 
