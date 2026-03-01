@@ -74,8 +74,6 @@ export const config: ConfigData = new ConfigData({
     'address',
     'postcode',
     'licenceHolder',
-    'borough',
-    'managingAgent',
   ],
   languages: ['EN'],
   language: 'EN',
