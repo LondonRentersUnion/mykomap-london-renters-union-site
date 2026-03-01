@@ -11,7 +11,7 @@ import {
 import * as versions from "./version.json";
 
 import about from "./about.html";
-//import { getPopup } from './popup'; // Uncomment if custom popup needed
+import { getPopup } from './popup';
 import { InitiativeObj } from "mykomap/src/map-app/app/model/initiative";
 
 type Row = Record<string, string | null | undefined>;
@@ -106,6 +106,6 @@ export const config: ConfigData = new ConfigData({
   showDatasetsPanel: false,
   showDirectoryPanel: true,
   aboutHtml: about,
-  //  customPopup: getPopup, // uncomment if custom popup wanted
+  customPopup: getPopup,
   ...versions,
 });
