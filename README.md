@@ -11,12 +11,26 @@ Check out that repository if you require additional help setting up your environ
 
 ## Running the server
 
-Start your local server and fire up your local MykoMap instance: <br/>
-`npm run build; npm run server`
+### Windows
+
+An easy way to build and run the server is to: </br>
+
+Install [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install) </br>
+Install [Node.js in the WSL environment](https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl) </br>
+```
+apt install rsync php-cli php-curl
+npm install
+```
+
+Once you've installed all the requirements, within your in the WSL environment to start your local MykoMap instance: </br>
+
+```
+npm run build
+npm run server
+```
 
 Because I'm running it in a Docker development container I (marc) have to do: <br/>
 `echo "http://$(hostname -I | tr -d ' '):8080"; npm run public-server`
-
 
 ### DCC instructions for map set-up for custom configuration
 
