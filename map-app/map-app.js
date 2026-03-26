@@ -58,7 +58,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 // Module
-var code = "<div class=\"about\">\n  <h3>London Renter's Union - Property Licensing Map</h3>\n  <p>\n    A <a href=\"https://www.londonrentersunion.org/\">London Renters Union</a> project\n  </p>\n  <p>\n    This map displays property licensing data for the London Borough of Hackney,\n    as of November 2025 from Hackney Council's public licensing register.\n  </p>\n  <p>\n    Licensing data on public registers is often out of date.\n    Unlicensed properties are a major problem, please bear this in mind if using these maps for outreach. \n  </p>\n  <p>\n    This site is powered by <a href=\"https://digitalcommons.coop/mykomaps/\">Mykomaps</a> which was created by the <a href=\"https://digitalcommons.coop/\">Digital Commons Co-operative</a>.\n  </p>\n</div>\n";
+var code = "<div class=\"about\">\r\n  <h3>London Renter's Union - Property Licensing Map</h3>\r\n  <p>\r\n    A <a href=\"https://www.londonrentersunion.org/\">London Renters Union</a> project\r\n  </p>\r\n  <p>\r\n    This map displays property licensing data for London Boroughs,\r\n    as of November 2025 from various public licensing registers.\r\n  </p>\r\n  <p>\r\n    Licensing data on public registers is often out of date.\r\n    Unlicensed properties are a major problem, please bear this in mind if using these maps for outreach. \r\n  </p>\r\n  <p>\r\n    This site is powered by <a href=\"https://digitalcommons.coop/mykomaps/\">Mykomaps</a> which was created by the <a href=\"https://digitalcommons.coop/\">Digital Commons Co-operative</a>.\r\n  </p>\r\n</div>\r\n";
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (code);
 
@@ -42866,6 +42866,7 @@ const rowToObj = (0,mykomap_obj_transformer__WEBPACK_IMPORTED_MODULE_1__.mkObjTr
     uri: mykomap_obj_transformer__WEBPACK_IMPORTED_MODULE_1__.Transforms.prefixed(baseUri).from('property_id'),
     name: mykomap_obj_transformer__WEBPACK_IMPORTED_MODULE_1__.Transforms.text('').from('address'),
     address: mykomap_obj_transformer__WEBPACK_IMPORTED_MODULE_1__.Transforms.text('').from('address'),
+    borough: mykomap_obj_transformer__WEBPACK_IMPORTED_MODULE_1__.Transforms.text('').from('borough'),
     lat: mykomap_obj_transformer__WEBPACK_IMPORTED_MODULE_1__.Transforms.nullable.number(null).from('latitude'),
     lng: mykomap_obj_transformer__WEBPACK_IMPORTED_MODULE_1__.Transforms.nullable.number(null).from('longitude'),
     description: mykomap_obj_transformer__WEBPACK_IMPORTED_MODULE_1__.Transforms.text('').from('licence_type'),
@@ -42874,10 +42875,14 @@ const rowToObj = (0,mykomap_obj_transformer__WEBPACK_IMPORTED_MODULE_1__.mkObjTr
     licenceRef: mykomap_obj_transformer__WEBPACK_IMPORTED_MODULE_1__.Transforms.text('').from('licence_reference_number'),
     managingAgent: mykomap_obj_transformer__WEBPACK_IMPORTED_MODULE_1__.Transforms.text('').from('managing_agent_name'),
     licenceType: mykomap_obj_transformer__WEBPACK_IMPORTED_MODULE_1__.Transforms.lookup({ index: licenceTypeIndex, default: '' }).from('licence_type'),
+    licenceStartDate: mykomap_obj_transformer__WEBPACK_IMPORTED_MODULE_1__.Transforms.text('').from('licence_start_date_clean'),
+    licenceEndDate: mykomap_obj_transformer__WEBPACK_IMPORTED_MODULE_1__.Transforms.text('').from('licence_end_date_clean'),
+    scrapedDate: mykomap_obj_transformer__WEBPACK_IMPORTED_MODULE_1__.Transforms.text('').from('scraped_date'),
 });
 const fields = {
     description: 'value',
     address: 'value',
+    borough: 'value',
     postcode: 'value',
     licenceHolder: 'value',
     licenceRef: 'value',
@@ -42886,10 +42891,13 @@ const fields = {
         type: 'vocab',
         uri: 'lic:',
     },
+    licenceStartCleanDate: 'value',
+    licenceEndCleanDate: 'value',
+    scrapedDate: 'value',
 };
 const config = new mykomap_app_model_config_schema__WEBPACK_IMPORTED_MODULE_0__.ConfigData({
-    namedDatasets: ['hackney'],
-    htmlTitle: 'Hackney Property Licensing',
+    namedDatasets: ['metastreet'],
+    htmlTitle: 'London Property Licensing',
     defaultLatLng: [51.545, -0.055],
     fields: fields,
     filterableFields: ['licenceType'],
@@ -42911,10 +42919,10 @@ const config = new mykomap_app_model_config_schema__WEBPACK_IMPORTED_MODULE_0__.
     ],
     dataSources: [
         {
-            id: 'hackney-licensing',
-            label: 'Hackney Licensing Data',
+            id: 'metastreet',
+            label: 'MetaStreet Data',
             type: 'csv',
-            url: 'hackney.csv',
+            url: 'AllMetaStreet_partialCleaned_2026-03-14.csv',
             transform: rowToObj,
         },
     ],
@@ -77233,7 +77241,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"variant":"mykomap-london-renters-union-site","timestamp":"2026-03-26T17:21:18.713Z","gitcommit":"15d2e79","mykoMapVersion":"3.1.4"}');
+module.exports = JSON.parse('{"variant":"mykomap-london-renters-union-site","timestamp":"2026-03-26T17:22:42.566Z","gitcommit":"ba165c8","mykoMapVersion":"3.1.4"}');
 
 /***/ })
 
