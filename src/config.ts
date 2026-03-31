@@ -11,7 +11,7 @@ import {
 import * as versions from "./version.json";
 
 import about from "./about.html";
-import { getPopup } from './popup';
+import { getPopup } from './popup'; // Uncomment if custom popup needed
 import { InitiativeObj } from "mykomap/src/map-app/app/model/initiative";
 
 type Row = Record<string, string | null | undefined>;
@@ -64,8 +64,8 @@ const fields: FieldsDef = {
 
 
 export const config: ConfigData = new ConfigData({
-  namedDatasets: ['hackney'],
-  htmlTitle: 'Hackney Property Licensing',
+  namedDatasets: ['metastreet'],
+  htmlTitle: 'London Property Licensing',
   defaultLatLng: [51.545, -0.055],
   fields: fields,
   filterableFields: ['licenceType'],
@@ -89,17 +89,10 @@ export const config: ConfigData = new ConfigData({
   ],
   dataSources: [
     {
-      id: 'hackney-licensing',
-      label: 'Hackney Licensing Data',
-      type: 'csv',
-      url: 'hackney.csv',
-      transform: rowToObj,
-    },
-    {
       id: 'metastreet',
       label: 'MetaStreet Data',
       type: 'csv',
-      url: 'AllMetaStreet_partialCleaned_incDates.csv',
+      url: 'AllMetaStreet_partialCleaned_2026-03-14.csv',
       transform: rowToObj,
     },
   ],
