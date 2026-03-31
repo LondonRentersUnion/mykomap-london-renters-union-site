@@ -42856,7 +42856,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
+ // Uncomment if custom popup needed
 const baseUri = 'https://hackney.gov.uk/licensing/';
 const licenceTypeIndex = {
     '257 HMO': 'lic:257hmo',
@@ -42898,8 +42898,8 @@ const fields = {
     scrapedDate: 'value',
 };
 const config = new mykomap_app_model_config_schema__WEBPACK_IMPORTED_MODULE_0__.ConfigData({
-    namedDatasets: ['hackney'],
-    htmlTitle: 'Hackney Property Licensing',
+    namedDatasets: ['metastreet'],
+    htmlTitle: 'London Property Licensing',
     defaultLatLng: [51.545, -0.055],
     fields: fields,
     filterableFields: ['licenceType'],
@@ -42923,17 +42923,10 @@ const config = new mykomap_app_model_config_schema__WEBPACK_IMPORTED_MODULE_0__.
     ],
     dataSources: [
         {
-            id: 'hackney-licensing',
-            label: 'Hackney Licensing Data',
-            type: 'csv',
-            url: 'hackney.csv',
-            transform: rowToObj,
-        },
-        {
             id: 'metastreet',
             label: 'MetaStreet Data',
             type: 'csv',
-            url: 'AllMetaStreet_partialCleaned_incDates.csv',
+            url: 'AllMetaStreet_partialCleaned_2026-03-14.csv',
             transform: rowToObj,
         },
     ],
@@ -77347,7 +77340,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"variant":"mykomap-london-renters-union-site","timestamp":"2026-03-31T01:12:58.270Z","gitcommit":"55c4b8f","mykoMapVersion":"3.1.4"}');
+module.exports = JSON.parse('{"variant":"mykomap-london-renters-union-site","timestamp":"2026-03-31T02:17:21.405Z","gitcommit":"44f306f","mykoMapVersion":"3.1.4"}');
 
 /***/ })
 
