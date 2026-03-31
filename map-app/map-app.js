@@ -42849,8 +42849,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var mykomap_obj_transformer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mykomap/obj-transformer */ "./node_modules/mykomap/src/map-app/obj-transformer.ts");
 /* harmony import */ var _version_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./version.json */ "./src/version.json");
 /* harmony import */ var _about_html__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./about.html */ "./src/about.html");
+/* harmony import */ var _popup__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./popup */ "./src/popup.ts");
 // Re-export of ConfigData in mykomap/index above seems not to work,
 // so import it directly from here:
+
 
 
 
@@ -42896,8 +42898,8 @@ const fields = {
     scrapedDate: 'value',
 };
 const config = new mykomap_app_model_config_schema__WEBPACK_IMPORTED_MODULE_0__.ConfigData({
-    namedDatasets: ['metastreet'],
-    htmlTitle: 'London Property Licensing',
+    namedDatasets: ['hackney'],
+    htmlTitle: 'Hackney Property Licensing',
     defaultLatLng: [51.545, -0.055],
     fields: fields,
     filterableFields: ['licenceType'],
@@ -42906,6 +42908,8 @@ const config = new mykomap_app_model_config_schema__WEBPACK_IMPORTED_MODULE_0__.
         'address',
         'postcode',
         'licenceHolder',
+        'borough',
+        'managingAgent',
     ],
     languages: ['EN'],
     language: 'EN',
@@ -42919,19 +42923,121 @@ const config = new mykomap_app_model_config_schema__WEBPACK_IMPORTED_MODULE_0__.
     ],
     dataSources: [
         {
+            id: 'hackney-licensing',
+            label: 'Hackney Licensing Data',
+            type: 'csv',
+            url: 'hackney.csv',
+            transform: rowToObj,
+        },
+        {
             id: 'metastreet',
             label: 'MetaStreet Data',
             type: 'csv',
-            url: 'AllMetaStreet_partialCleaned_2026-03-14.csv',
+            url: 'AllMetaStreet_partialCleaned_incDates.csv',
             transform: rowToObj,
         },
     ],
     showDatasetsPanel: false,
     showDirectoryPanel: true,
     aboutHtml: _about_html__WEBPACK_IMPORTED_MODULE_3__["default"],
-    //  customPopup: getPopup, // uncomment if custom popup wanted
+    customPopup: _popup__WEBPACK_IMPORTED_MODULE_4__.getPopup,
     .../*#__PURE__*/ (_version_json__WEBPACK_IMPORTED_MODULE_2___namespace_cache || (_version_json__WEBPACK_IMPORTED_MODULE_2___namespace_cache = __webpack_require__.t(_version_json__WEBPACK_IMPORTED_MODULE_2__, 2))),
 });
+
+
+/***/ }),
+
+/***/ "./src/popup.ts":
+/*!**********************!*\
+  !*** ./src/popup.ts ***!
+  \**********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   getAddress: () => (/* binding */ getAddress),
+/* harmony export */   getEmail: () => (/* binding */ getEmail),
+/* harmony export */   getFacebook: () => (/* binding */ getFacebook),
+/* harmony export */   getPopup: () => (/* binding */ getPopup),
+/* harmony export */   getTwitter: () => (/* binding */ getTwitter),
+/* harmony export */   htmlEscape: () => (/* binding */ htmlEscape)
+/* harmony export */ });
+/* harmony import */ var mykomap_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mykomap/utils */ "./node_modules/mykomap/src/map-app/utils.ts");
+
+function htmlEscape(str) {
+    if (str == null) // deliberately loose equality
+        return '';
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+}
+function getAddress(initiative) {
+    // We want to add the whole address into a single paragraph.
+    // Not all orgs have an address, however.
+    let address = [];
+    if (initiative.street)
+        address = address.concat((0,mykomap_utils__WEBPACK_IMPORTED_MODULE_0__.toString)(initiative.street)
+            .split(';')
+            .map(elem => elem.trim())
+            .filter(elem => elem !== initiative.name)
+            .map(htmlEscape));
+    address = address.concat([initiative.locality,
+        initiative.region,
+        initiative.postcode].map(x => (0,mykomap_utils__WEBPACK_IMPORTED_MODULE_0__.toString)(x)).map(htmlEscape));
+    if (!initiative.hasLocation())
+        address.push('<i>NO LOCATION AVAILABLE</i>');
+    return address.join('<br/>\n        ');
+}
+function getEmail(initiative) {
+    // Not all orgs have an email
+    if (initiative.email)
+        return `<a class="fa fa-at" href="mailto:${initiative.email}" target="_blank" ></a>`;
+    return "";
+}
+function getFacebook(initiative) {
+    // not all have a facebook
+    if (initiative.facebook)
+        return `<a class="fab fa-facebook" href="https://facebook.com/${initiative.facebook}" target="_blank" ></a>`;
+    return "";
+}
+function getTwitter(initiative) {
+    // not all have twitter
+    if (initiative.twitter)
+        return `<a class="fab fa-twitter" href="https://twitter.com/${initiative.twitter}" target="_blank" ></a>`;
+    return '';
+}
+function getPopup(initiative, dataservices) {
+    const labels = dataservices.getFunctionalLabels();
+    let popupHTML = `
+    <div class="sea-initiative-details">
+      <h2 class="sea-initiative-address">${initiative.address}</h3>
+      <h3 class="sea-initiative-postcode">Postcode: ${initiative.postcode}</h3>
+      <h3 class="sea-initiative-borough">Borough: ${initiative.borough}</h3>
+      <h3 class="sea-initiative-licence-holder">Licence Holder: ${initiative.licenceHolder}</h3>
+      <h3 class="sea-initiative-licence-reference">Licence Reference Number: ${initiative.licenceRef}</h3>
+      <h3 class="sea-initiative-licence-start-date">Licence Start Date: ${initiative.licenceStartDate}</h3>
+      <h3 class="sea-initiative-licence-end-date">Licence End Date: ${initiative.licenceEndDate}</h3>
+      <h3 class="sea-initiative-managing-agent">Managing Agent: ${initiative.managingAgent}</h3>
+      <h3 class="sea-initiative-scrape-date">Scrape Date: ${initiative.scrapedDate}</h3>
+      <p>${initiative.desc || ''}</p>
+    </div>
+    
+    <div class="sea-initiative-contact">
+      <h3>${labels.contact}</h3>
+      ${getAddress(initiative)}
+      
+      <div class="sea-initiative-links">
+        ${getEmail(initiative)}
+        ${getFacebook(initiative)}
+        ${getTwitter(initiative)}
+      </div>
+    </div>
+  `;
+    return popupHTML;
+}
 
 
 /***/ }),
@@ -77241,7 +77347,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"variant":"mykomap-london-renters-union-site","timestamp":"2026-03-26T17:22:42.566Z","gitcommit":"ba165c8","mykoMapVersion":"3.1.4"}');
+module.exports = JSON.parse('{"variant":"mykomap-london-renters-union-site","timestamp":"2026-03-31T01:12:58.270Z","gitcommit":"55c4b8f","mykoMapVersion":"3.1.4"}');
 
 /***/ })
 
